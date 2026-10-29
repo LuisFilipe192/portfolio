@@ -259,7 +259,7 @@ export default function App() {
               </div>
             </div>
             <div className="code-card">
-              <div className="code-card-header"><div><span className="file-icon"><Braces size={14} /></span> {t.terminalTitle}</div><span className="code-lang"><PYTHON></PYTHON></span></div>
+              <div className="code-card-header"><div><span className="file-icon"><Braces size={14} /></span> {t.terminalTitle}</div><span className="code-lang">PYTHON</span></div>
               <div className="code-content">
                 <div className="line-numbers">1<br />2<br />3<br />4<br />5<br />6</div>        
                 <div className="code-lines">
