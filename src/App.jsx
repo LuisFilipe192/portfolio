@@ -7,7 +7,7 @@ import {
 
 const copy = {
   pt: {
-    nav: ['Início', 'Sobre', 'Projetos', 'Ferramentas'],
+    nav: ['Sobre', 'Projetos', 'Ferramentas'],
     availability: 'Disponível para estágio',
     heroEyebrow: 'PORTFÓLIO / 2026',
     greeting: 'Olá, mundo! Eu sou',
@@ -76,7 +76,7 @@ const copy = {
     emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
   },
   en: {
-    nav: ['Home', 'About', 'Projects', 'Toolkit'],
+    nav: ['About', 'Projects', 'Toolkit'],
     availability: 'Open to internships',
     heroEyebrow: 'PORTFOLIO / 2026',
     greeting: 'Hello, world! I’m',
@@ -201,6 +201,11 @@ export default function App() {
   }
 
   
+  const goToContact = (event) => {
+    event.preventDefault()
+    scrollTo('contact')
+  }
+
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(email)
@@ -226,11 +231,11 @@ export default function App() {
         </a>
         <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label={t.mainNav}>
           {t.nav.map((item, index) => (
-            <button key={item} onClick={() => scrollTo(['home', 'about', 'projects', 'stack'][index])}>
-              <span className="nav-index">0{index}</span>{item}
+            <button key={item} onClick={() => scrollTo(['about', 'projects', 'stack'][index])}>
+              <span className="nav-index">0{index + 1}</span>{item}
             </button>
           ))}
-          <a className="nav-contact" href={mailtoHref}><Mail size={15} /> {t.contact}</a>
+          <a className="nav-contact" href="#contact" onClick={goToContact}><Mail size={15} /> {t.contact}</a>
         </nav>
         <div className="top-actions">
           <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label={t.changeLanguage}>
@@ -252,7 +257,7 @@ export default function App() {
             <p className="hero-intro">{t.intro}</p>
             <div className="hero-ctas">
               <button className="button button-primary" onClick={() => scrollTo('projects')}>{t.viewProjects}<ArrowDownRight size={17} /></button>
-              <a className="button button-ghost" href={mailtoHref}>{t.contact}<ArrowUpRight size={16} /></a>
+              <a className="button button-ghost" href="#contact" onClick={goToContact}>{t.contact}<ArrowDownRight size={16} /></a>
               <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a>
             </div>
             <div className="hero-socials">
