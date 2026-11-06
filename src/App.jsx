@@ -200,7 +200,7 @@ export default function App() {
           <div className="hero-copy">
             <div className="status-pill"><span className="status-pulse" />{t.availability}</div>
             <p className="eyebrow"><span className="eyebrow-line" />{t.heroEyebrow}</p>
-            <h1>{t.greeting}<br /><span className="hero-name">Luis Filipe<span className="green">.</span></span></h1>
+            <h1>{t.greeting}<br /><span className="hero-name">Luís Filipe<span className="green">.</span></span></h1>
             <h2>{t.role}</h2>
             <p className="hero-intro">{t.intro}</p>
             <div className="hero-ctas">
@@ -266,7 +266,7 @@ export default function App() {
                   <p><span className="code-purple">class</span> <span className="code-blue">Developer</span>:</p>
                   {lang === 'pt' ? (
                     <>
-                      <p className="indent"><span className="code-cyan">nome</span> = <span className="code-yellow">"Luis Felipe"</span></p>
+                      <p className="indent"><span className="code-cyan">nome</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">formacao</span> = <span className="code-yellow">"Ciência da Computação"</span></p>
                       <p className="indent"><span className="code-cyan">instituicao</span> = <span className="code-yellow">"CESAR School"</span></p>
                       <p className="indent"><span className="code-cyan">foco</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automação"</span>, <span className="code-yellow">"IA"</span>]</p>
@@ -275,7 +275,7 @@ export default function App() {
                     </>
                   ) : (
                     <>
-                      <p className="indent"><span className="code-cyan">name</span> = <span className="code-yellow">"Luis Felipe"</span></p>
+                      <p className="indent"><span className="code-cyan">name</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">degree</span> = <span className="code-yellow">"Computer Science"</span></p>
                       <p className="indent"><span className="code-cyan">institution</span> = <span className="code-yellow">"CESAR School"</span></p>
                       <p className="indent"><span className="code-cyan">focus</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automation"</span>, <span className="code-yellow">"AI"</span>]</p>
@@ -368,7 +368,7 @@ export default function App() {
 
       <footer className="footer section-wrap">
         <a className="brand footer-brand" href="#home"><span className="brand-mark"><Terminal size={17} /></span><span>lf<span className="brand-dot">.</span>dev</span></a>
-        <p>© {new Date().getFullYear()} Luis Filipe. {t.footer}</p>
+        <p>© {new Date().getFullYear()} Luís Filipe. {t.footer}</p>
         <button onClick={() => scrollTo('home')}>{t.backTop}<ArrowUpRight size={13} /></button>
       </footer>
     </div>
