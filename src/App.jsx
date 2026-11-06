@@ -75,8 +75,7 @@ const copy = {
     copiedShort: 'Copiado',
     emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
     emailBody: 'Olá, Luís! Vi seu portfólio e gostaria de conversar sobre uma oportunidade.',
-    mailPrompt: 'Escolha onde escrever a mensagem:',
-    mailApp: 'App de e-mail',
+    mailPrompt: 'Escolha como falar comigo:',
   },
   en: {
     nav: ['About', 'Projects', 'Toolkit'],
@@ -147,8 +146,7 @@ const copy = {
     copiedShort: 'Copied',
     emailSubject: 'Internship Opportunity — Software Development',
     emailBody: 'Hi, Luís! I saw your portfolio and would like to talk about an opportunity.',
-    mailPrompt: 'Choose where to write your message:',
-    mailApp: 'Email app',
+    mailPrompt: 'Choose how to reach me:',
   },
 }
 
@@ -185,14 +183,14 @@ export default function App() {
   const mailSubject = encodeURIComponent(t.emailSubject)
   const mailBody = encodeURIComponent(t.emailBody)
   const mailtoHref = `mailto:${email}?subject=${mailSubject}&body=${mailBody}`
-  const webMailLinks = [
-    { name: 'Gmail', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${mailTo}&su=${mailSubject}&body=${mailBody}` },
-    { name: 'Outlook', href: `https://outlook.live.com/mail/0/deeplink/compose?to=${mailTo}&subject=${mailSubject}&body=${mailBody}` },
-    { name: 'Yahoo', href: `https://compose.mail.yahoo.com/?to=${mailTo}&subject=${mailSubject}&body=${mailBody}` },
-  ]
+  const gmailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${mailTo}&su=${mailSubject}&body=${mailBody}`
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
   const resumeUrl = `${import.meta.env.BASE_URL}assets/curriculo-luis-filipe.pdf`
+  const contactLinks = [
+    { name: 'Gmail', href: gmailHref },
+    { name: 'LinkedIn', href: linkedin },
+  ]
 
   useEffect(() => {
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
@@ -429,8 +427,7 @@ export default function App() {
                 <div className="mail-options" id="mail-options">
                   <p>{t.mailPrompt}</p>
                   <div className="mail-options-list">
-                    {webMailLinks.map(link => <a key={link.name} href={link.href} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={12} /></a>)}
-                    <a href={mailtoHref}>{t.mailApp}</a>
+                    {contactLinks.map(link => <a key={link.name} href={link.href} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={12} /></a>)}
                   </div>
                 </div>
               )}
