@@ -51,3 +51,10 @@
 
 .terminal-output{justify-content:flex-end}
 @media(max-width:760px){.hero-visual{height:auto;padding:18px 0}}
+
+.chevron-open{transform:rotate(180deg)}
+.mail-options{margin-top:16px;animation:fadeUp .25s ease both}
+.mail-options p{margin:0 0 9px;color:#9ba9b6;font:10px var(--mono)}
+.mail-options-list{display:flex;flex-wrap:wrap;gap:8px}
+.mail-options-list a{display:inline-flex;align-items:center;gap:6px;padding:8px 11px;border:1px solid #2a3743;border-radius:5px;background:rgba(13,18,26,.65);color:#d6dfe7;font:11px var(--mono);transition:border-color .2s,color .2s}
+.mail-options-list a:hover{border-color:#5b7667;color:var(--green)}

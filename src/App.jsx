@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
-  ArrowDownRight, ArrowUpRight, Braces, Check, ChevronRight, Code2,
+  ArrowDownRight, ArrowUpRight, Braces, Check, ChevronDown, ChevronRight, Code2,
   Command, Copy, Cpu, Download, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
   Wallet, X, Zap
 } from 'lucide-react'
@@ -74,6 +74,9 @@ const copy = {
     copyEmail: 'Copiar e-mail',
     copiedShort: 'Copiado',
     emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
+    emailBody: 'Olá, Luís! Vi seu portfólio e gostaria de conversar sobre uma oportunidade.',
+    mailPrompt: 'Escolha onde escrever a mensagem:',
+    mailApp: 'App de e-mail',
   },
   en: {
     nav: ['About', 'Projects', 'Toolkit'],
@@ -143,6 +146,9 @@ const copy = {
     copyEmail: 'Copy email',
     copiedShort: 'Copied',
     emailSubject: 'Internship Opportunity — Software Development',
+    emailBody: 'Hi, Luís! I saw your portfolio and would like to talk about an opportunity.',
+    mailPrompt: 'Choose where to write your message:',
+    mailApp: 'Email app',
   },
 }
 
@@ -171,10 +177,19 @@ export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [typed, setTyped] = useState('')
   const [emailCopied, setEmailCopied] = useState(false)
+  const [mailOptionsOpen, setMailOptionsOpen] = useState(false)
   
   const t = copy[lang]
   const email = 'luisfelipe192ss@gmail.com'
-  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(t.emailSubject)}`
+  const mailTo = encodeURIComponent(email)
+  const mailSubject = encodeURIComponent(t.emailSubject)
+  const mailBody = encodeURIComponent(t.emailBody)
+  const mailtoHref = `mailto:${email}?subject=${mailSubject}&body=${mailBody}`
+  const webMailLinks = [
+    { name: 'Gmail', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${mailTo}&su=${mailSubject}&body=${mailBody}` },
+    { name: 'Outlook', href: `https://outlook.live.com/mail/0/deeplink/compose?to=${mailTo}&subject=${mailSubject}&body=${mailBody}` },
+    { name: 'Yahoo', href: `https://compose.mail.yahoo.com/?to=${mailTo}&subject=${mailSubject}&body=${mailBody}` },
+  ]
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
   const resumeUrl = `${import.meta.env.BASE_URL}assets/curriculo-luis-filipe.pdf`
@@ -403,13 +418,22 @@ export default function App() {
                 </button>
               </div>
               <div className="contact-actions">
-                <a className="button button-primary" href={mailtoHref}>
+                <button type="button" className="button button-primary" onClick={() => setMailOptionsOpen(!mailOptionsOpen)} aria-expanded={mailOptionsOpen} aria-controls="mail-options">
                   <Mail size={16} />
                   {t.emailButton}
-                  <ArrowUpRight size={15} />
-                </a>
+                  <ChevronDown size={15} className={mailOptionsOpen ? 'chevron-open' : ''} />
+                </button>
               <a className="button button-ghost" href={github} target="_blank" rel="noreferrer"><Github size={16} />{t.githubButton}<ArrowUpRight size={15} /></a>
               <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a></div>
+              {mailOptionsOpen && (
+                <div className="mail-options" id="mail-options">
+                  <p>{t.mailPrompt}</p>
+                  <div className="mail-options-list">
+                    {webMailLinks.map(link => <a key={link.name} href={link.href} target="_blank" rel="noreferrer">{link.name}<ArrowUpRight size={12} /></a>)}
+                    <a href={mailtoHref}>{t.mailApp}</a>
+                  </div>
+                </div>
+              )}
               {emailCopied && (
                 <div className="copy-toast" role="status" aria-live="polite">
                   <Check size={16} />
