@@ -32,10 +32,10 @@ const copy = {
     featured: 'DESTAQUE',
     codeLabel: 'CÓDIGO',
     projectItems: [
-      { id: 'processflow', title: 'ProcessFlow', type: 'Sistemas · C', desc: 'Orquestrador de processos com execução de tarefas, gerenciamento de processos filhos e suporte planejado a pipelines. Projeto focado em conceitos de sistemas operacionais.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'Em desenvolvimento', icon: 'terminal' },
-      { id: 'automation', title: 'Automação contábil', type: 'Automação · Python', desc: 'Gera o Livro Diário em Excel a partir de PDFs de rateio e planilhas de caixa, com os saldos já calculados. Um trabalho manual que levava 5 dias passou a levar 5 minutos, com menos risco de erro.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Experiência prática', icon: 'zap' },
-      { id: 'bombermancli', title: 'BombermanCLI', type: 'Jogo · C', desc: 'Jogo inspirado em Bomberman, com interface gráfica, movimentação do jogador, mecânica de bombas e detecção de colisões.', note: 'Projeto em equipe (3 pessoas). Minha parte: toda a programação do jogo; os colegas cuidaram de Makefile, vídeo e ajustes finais.', tags: ['C', 'Lógica de Jogos', 'Algoritmos'], status: 'Projeto acadêmico', icon: 'code' },
-      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'Aplicação web de finanças pessoais que substitui planilhas soltas: registra receitas e despesas, define orçamento por categoria e mostra no dashboard para onde o dinheiro foi a cada mês.', tags: ['Django REST', 'React', 'Playwright'], status: 'Em desenvolvimento', icon: 'wallet' },
+      { id: 'processflow', title: 'ProcessFlow', type: 'Sistemas · C', desc: 'Orquestrador de processos com execução de tarefas, gerenciamento de processos filhos e suporte planejado a pipelines. Projeto focado em conceitos de sistemas operacionais.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'Em desenvolvimento', icon: 'terminal', previewAlt: 'Terminal mostrando o ProcessFlow executando tarefas em processos filhos' },
+      { id: 'automation', title: 'Automação contábil', type: 'Automação · Python', desc: 'Gera o Livro Diário em Excel a partir de PDFs de rateio e planilhas de caixa, com os saldos já calculados. Um trabalho manual que levava 5 dias passou a levar 5 minutos, com menos risco de erro.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Experiência prática', icon: 'zap', previewAlt: 'Planilha do Livro Diário gerada pela automação, com entradas, saídas e saldo por dia' },
+      { id: 'bombermancli', title: 'BombermanCLI', type: 'Jogo · C', desc: 'Jogo inspirado em Bomberman, com interface gráfica, movimentação do jogador, mecânica de bombas e detecção de colisões.', note: 'Projeto em equipe (3 pessoas). Minha parte: toda a programação do jogo; os colegas cuidaram de Makefile, vídeo e ajustes finais.', tags: ['C', 'Lógica de Jogos', 'Algoritmos'], status: 'Projeto acadêmico', icon: 'code', previewAlt: 'Partida do BombermanCLI com o jogador, bombas, blocos e inimigos no mapa' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'Aplicação web de finanças pessoais que substitui planilhas soltas: registra receitas e despesas, define orçamento por categoria e mostra no dashboard para onde o dinheiro foi a cada mês.', tags: ['Django REST', 'React', 'Playwright'], status: 'Em desenvolvimento', icon: 'wallet', previewAlt: 'Dashboard do FinanceFlow com resumo do mês e gráficos de gastos por categoria' },
     ],
     stackLabel: '03 / FERRAMENTAS',
     stackTitle: 'Ferramentas do meu dia a dia',
@@ -82,10 +82,10 @@ const copy = {
     featured: 'FEATURED',
     codeLabel: 'SOURCE',
     projectItems: [
-      { id: 'processflow', title: 'ProcessFlow', type: 'Systems · C', desc: 'A process orchestrator for task execution, child-process management, and planned pipeline support. Focused on operating systems concepts.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'In development', icon: 'terminal' },
-      { id: 'automation', title: 'Accounting automation', type: 'Automation · Python', desc: 'Generates the accounting journal in Excel from apportionment PDFs and cash spreadsheets, with balances already calculated. Manual work that took 5 days now takes 5 minutes, with less risk of error.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Hands-on experience', icon: 'zap' },
-      { id: 'bombermancli', title: 'BombermanCLI', type: 'Game · C', desc: 'A Bomberman-inspired game featuring a graphical interface, player movement, bomb mechanics, and collision detection.', note: 'Team project (3 people). My part: all of the game programming; my teammates handled the Makefile, video, and final adjustments.', tags: ['C', 'Game Logic', 'Algorithms'], status: 'Academic project', icon: 'code' },
-      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'A personal finance web app that replaces scattered spreadsheets: it tracks income and expenses, sets budgets per category, and shows on a dashboard where the money went each month.', tags: ['Django REST', 'React', 'Playwright'], status: 'In development', icon: 'wallet' },
+      { id: 'processflow', title: 'ProcessFlow', type: 'Systems · C', desc: 'A process orchestrator for task execution, child-process management, and planned pipeline support. Focused on operating systems concepts.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'In development', icon: 'terminal', previewAlt: 'Terminal showing ProcessFlow running tasks in child processes' },
+      { id: 'automation', title: 'Accounting automation', type: 'Automation · Python', desc: 'Generates the accounting journal in Excel from apportionment PDFs and cash spreadsheets, with balances already calculated. Manual work that took 5 days now takes 5 minutes, with less risk of error.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Hands-on experience', icon: 'zap', previewAlt: 'Accounting journal spreadsheet generated by the automation, with daily inflows, outflows, and balance' },
+      { id: 'bombermancli', title: 'BombermanCLI', type: 'Game · C', desc: 'A Bomberman-inspired game featuring a graphical interface, player movement, bomb mechanics, and collision detection.', note: 'Team project (3 people). My part: all of the game programming; my teammates handled the Makefile, video, and final adjustments.', tags: ['C', 'Game Logic', 'Algorithms'], status: 'Academic project', icon: 'code', previewAlt: 'BombermanCLI match with the player, bombs, blocks, and enemies on the map' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'A personal finance web app that replaces scattered spreadsheets: it tracks income and expenses, sets budgets per category, and shows on a dashboard where the money went each month.', tags: ['Django REST', 'React', 'Playwright'], status: 'In development', icon: 'wallet', previewAlt: 'FinanceFlow dashboard with a monthly summary and spending charts by category' },
     ],
     stackLabel: '03 / TOOLKIT',
     stackTitle: 'Tools in my workflow',
@@ -107,6 +107,11 @@ const copy = {
     emailSubject: 'Internship Opportunity — Software Development',
   },
 }
+
+// Prévias opcionais: um arquivo <id-do-projeto>.<extensão> em src/assets/projects/.
+// Sem arquivo, o card é renderizado sem imagem (veja o README dessa pasta).
+const previewFiles = import.meta.glob('./assets/projects/*.{png,jpg,jpeg,webp,gif}', { eager: true, query: '?url', import: 'default' })
+const previewFor = (id) => Object.entries(previewFiles).find(([path]) => path.split('/').pop().split('.')[0] === id)?.[1]
 
 const projects = [
   { id: 'processflow', number: '01', link: 'https://github.com/LuisFilipe192/OrquestradorDeProcessos.git', accent: 'green' },
@@ -303,9 +308,12 @@ export default function App() {
             <p className="section-sub">{t.projectsSub}</p>
           </div>
           <div className="project-grid">
-            {t.projectItems.map((project, index) => (
+            {t.projectItems.map((project, index) => {
+              const preview = previewFor(project.id)
+              return (
               <article className={`project-card accent-${projects[index].accent}`} key={project.id}>
                 <div className="project-card-top"><span className="project-number">{projects[index].number} / 04</span><span className="project-icon"><IconFor name={project.icon} size={21} /></span></div>
+                {preview && <div className="project-preview"><img src={preview} alt={project.previewAlt} loading="lazy" decoding="async" /></div>}
                 <div className="project-type">{project.type}</div>
                 <h3>{project.title}</h3>
                 <p className="project-desc">{project.desc}</p>
@@ -313,7 +321,8 @@ export default function App() {
                 <div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-card-bottom"><span className="project-status"><i />{project.status}</span><a href={projects[index].link} target="_blank" rel="noreferrer" aria-label={`${t.codeLabel}: ${project.title}`}><Github size={16} /> {t.codeLabel} <ArrowUpRight size={13} /></a></div>
               </article>
-            ))}
+              )
+            })}
           </div>
         </section>
 

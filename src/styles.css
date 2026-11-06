@@ -45,3 +45,6 @@
 .copy-button:hover{border-color:#5b7667}
 
 .project-card .project-note{align-items:flex-start;margin:-6px 0 18px;line-height:1.6}
+
+.project-preview{aspect-ratio:16/9;margin:0 0 18px;border:1px solid #202c37;border-radius:6px;overflow:hidden;background:#0b1017}
+.project-preview img{display:block;width:100%;height:100%;object-fit:cover}
