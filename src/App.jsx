@@ -41,6 +41,14 @@ const copy = {
     stackLabel: '03 / FERRAMENTAS',
     stackTitle: 'Ferramentas do meu dia a dia',
     stackText: 'Tecnologias que utilizo ou estou desenvolvendo na prática. A lista acompanha minha evolução — não é uma promessa de domínio avançado em tudo.',
+    technologies: [
+      { name: 'Python', category: 'Automação e scripts', level: 'Uso prático' },
+      { name: 'C', category: 'Sistemas e estruturas de dados', level: 'Aprendendo na prática' },
+      { name: 'Java', category: 'POO e fundamentos de backend', level: 'Em evolução' },
+      { name: 'JavaScript', category: 'Desenvolvimento web', level: 'Fundamentos' },
+      { name: 'HTML / CSS', category: 'Interfaces responsivas', level: 'Fundamentos' },
+      { name: 'Git / GitHub', category: 'Controle de versão', level: 'Uso diário' },
+    ],
     softLabel: 'TAMBÉM POR AQUI',
     softSkills: ['Resolução de problemas', 'Aprendizado contínuo', 'Automação de tarefas', 'Trabalho em equipe'],
     contactLabel: '04 / PRÓXIMO PASSO',
@@ -50,6 +58,16 @@ const copy = {
     githubButton: 'Ver GitHub',
     footer: 'Feito com curiosidade, música e código.',
     backTop: 'VOLTAR AO TOPO',
+    pageTitle: 'Luís Filipe | Desenvolvedor de Software',
+    homeLabel: 'Início',
+    mainNav: 'Navegação principal',
+    changeLanguage: 'Mudar idioma',
+    terminalLabel: 'Terminal decorativo com código',
+    focusList: ['Desenvolvimento de Software', 'Automação com Python', 'Backend e Sistemas'],
+    processDone: 'processo concluído com curiosidade',
+    systemOnline: 'SISTEMA ONLINE',
+    saved: 'salvo',
+    contactIndex: ['VAMOS', 'CONVERSAR'],
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
     copied: '> e-mail copiado com sucesso',
@@ -92,6 +110,14 @@ const copy = {
     stackLabel: '03 / TOOLKIT',
     stackTitle: 'Tools in my workflow',
     stackText: 'Technologies I use or am actively learning by building. This list evolves with me — it is not a claim of advanced mastery in everything.',
+    technologies: [
+      { name: 'Python', category: 'Automation & scripting', level: 'Practical use' },
+      { name: 'C', category: 'Systems & data structures', level: 'Learning by building' },
+      { name: 'Java', category: 'OOP & backend foundations', level: 'Growing' },
+      { name: 'JavaScript', category: 'Web development', level: 'Foundations' },
+      { name: 'HTML / CSS', category: 'Responsive interfaces', level: 'Foundations' },
+      { name: 'Git / GitHub', category: 'Version control', level: 'Daily workflow' },
+    ],
     softLabel: 'ALSO IN MY TOOLKIT',
     softSkills: ['Problem solving', 'Continuous learning', 'Task automation', 'Teamwork'],
     contactLabel: '04 / NEXT STEP',
@@ -101,6 +127,16 @@ const copy = {
     githubButton: 'View GitHub',
     footer: 'Made with curiosity, music, and code.',
     backTop: 'BACK TO TOP',
+    pageTitle: 'Luís Filipe | Software Developer',
+    homeLabel: 'Home',
+    mainNav: 'Main navigation',
+    changeLanguage: 'Change language',
+    terminalLabel: 'Decorative code terminal',
+    focusList: ['Software Development', 'Python Automation', 'Backend & Systems'],
+    processDone: 'process completed with curiosity',
+    systemOnline: 'SYSTEM ONLINE',
+    saved: 'saved',
+    contactIndex: ['LET’S', 'CONNECT'],
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
     copied: '> email copied successfully',
@@ -120,15 +156,6 @@ const projects = [
   { id: 'automation', number: '02', link: 'https://github.com/LuisFilipe192/automacao_de_Livro_Diario.projeto_pessoal.git', accent: 'purple' },
   { id: 'bombermancli', number: '03', link: 'https://github.com/kaik-e/BombermanCLI.git', accent: 'blue' },
   { id: 'financeflow', number: '04', link: 'https://github.com/LuisFilipe192/FinanceFlow', accent: 'orange' },
-]
-
-const technologies = [
-  { name: 'Python', category: 'Automation & scripting', level: 'Practical use' },
-  { name: 'C', category: 'Systems & data structures', level: 'Learning by building' },
-  { name: 'Java', category: 'OOP & backend foundations', level: 'Growing' },
-  { name: 'JavaScript', category: 'Web development', level: 'Foundations' },
-  { name: 'HTML / CSS', category: 'Responsive interfaces', level: 'Foundations' },
-  { name: 'Git / GitHub', category: 'Version control', level: 'Daily workflow' },
 ]
 
 function IconFor({ name, size = 20 }) {
@@ -151,6 +178,11 @@ export default function App() {
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
   const resumeUrl = `${import.meta.env.BASE_URL}assets/curriculo-luis-filipe.pdf`
+
+  useEffect(() => {
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
+    document.title = t.pageTitle
+  }, [lang, t.pageTitle])
 
   useEffect(() => {
     const phrase = 'software.create(impact);'
@@ -188,11 +220,11 @@ export default function App() {
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <header className="topbar">
-        <a className="brand" href="#home" aria-label="Home">
+        <a className="brand" href="#home" aria-label={t.homeLabel}>
           <span className="brand-mark"><Terminal size={19} /></span>
           <span>lf<span className="brand-dot">.</span>dev</span>
         </a>
-        <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label="Main navigation">
+        <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label={t.mainNav}>
           {t.nav.map((item, index) => (
             <button key={item} onClick={() => scrollTo(['home', 'about', 'projects', 'stack'][index])}>
               <span className="nav-index">0{index + 1}</span>{item}
@@ -201,7 +233,7 @@ export default function App() {
           <a className="nav-contact" href={mailtoHref}><Mail size={15} /> {t.contact}</a>
         </nav>
         <div className="top-actions">
-          <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label="Change language">
+          <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label={t.changeLanguage}>
             <Globe2 size={15} /><span>{lang === 'pt' ? 'PT' : 'EN'}</span><span className="lang-divider">/</span><span className="lang-muted">{lang === 'pt' ? 'EN' : 'PT'}</span>
           </button>
           <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? t.menuClose : t.menuOpen}>
@@ -228,7 +260,7 @@ export default function App() {
               <a href={linkedin} target="_blank" rel="noreferrer"><ExternalLink size={16} /> LinkedIn <ArrowUpRight size={12} /></a>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Decorative code terminal">
+          <div className="hero-visual" aria-label={t.terminalLabel}>
             <div className="visual-grid" />
             <div className="orbit orbit-a" /><div className="orbit orbit-b" />
             <div className="terminal-window">
@@ -243,14 +275,12 @@ export default function App() {
                 <h3>luis_filipe</h3>
                 <p><span className="term-green">➜</span> <span className="term-blue">~</span> cat focus.txt</p>
                 <ul className="terminal-list">
-                  <li><span>+</span> Software Development</li>
-                  <li><span>+</span> Python Automation</li>
-                  <li><span>+</span> Backend & Systems</li>
+                  {t.focusList.map(item => <li key={item}><span>+</span> {item}</li>)}
                 </ul>
                 <p><span className="term-green">➜</span> <span className="term-blue">~</span> <span className="typed-text">{typed}</span><span className="cursor">▋</span></p>
-                <div className="terminal-output"><Check size={14} /> process completed with curiosity</div>
+                <div className="terminal-output"><Check size={14} /> {t.processDone}</div>
               </div>
-              <div className="terminal-bottom"><span><i /> SYSTEM ONLINE</span><span>UTF-8</span><span>Ln 24, Col 08</span></div>
+              <div className="terminal-bottom"><span><i /> {t.systemOnline}</span><span>UTF-8</span><span>Ln 24, Col 08</span></div>
             </div>
             <div className="floating-chip chip-top"><Code2 size={15} /><span>clean_code()</span></div>
             <div className="floating-chip chip-bottom"><Cpu size={15} /><span>always_learning = true</span></div>
@@ -301,7 +331,7 @@ export default function App() {
                   )}
                 </div>
               </div>
-              <div className="code-card-footer"><span><i /> saved</span><span>UTF-8</span><span>Python</span></div>
+              <div className="code-card-footer"><span><i /> {t.saved}</span><span>UTF-8</span><span>Python</span></div>
             </div>
           </div>
         </section>
@@ -338,7 +368,7 @@ export default function App() {
           </div>
           <div className="stack-layout">
             <div className="tech-grid">
-              {technologies.map((tech, i) => <div className="tech-item" key={tech.name}><span className="tech-number">0{i + 1}</span><div><h3>{tech.name}</h3><p>{tech.category}</p></div><span className="tech-level">{tech.level}</span></div>)}
+              {t.technologies.map((tech, i) => <div className="tech-item" key={tech.name}><span className="tech-number">0{i + 1}</span><div><h3>{tech.name}</h3><p>{tech.category}</p></div><span className="tech-level">{tech.level}</span></div>)}
             </div>
             <div className="soft-panel">
               <div className="soft-panel-head"><Zap size={17} /><span>{t.softLabel}</span></div>
@@ -377,7 +407,7 @@ export default function App() {
                 </div>
               )}            
             </div>
-            <div className="contact-index">LET’S<br />CONNECT<span>.</span></div>
+            <div className="contact-index">{t.contactIndex[0]}<br />{t.contactIndex[1]}<span>.</span></div>
           </div>
         </section>
       </main>
