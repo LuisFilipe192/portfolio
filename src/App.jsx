@@ -11,7 +11,7 @@ const copy = {
     availability: 'Disponível para estágio',
     heroEyebrow: 'PORTFÓLIO / 2026',
     greeting: 'Olá, mundo! Eu sou',
-    role: 'Desenvolvedor em formação.',
+    role: 'Backend e automação com Python, C e Java · Ciência da Computação na CESAR School',
     intro: 'Transformo problemas reais em soluções com código, automação e curiosidade constante.',
     viewProjects: 'Explorar projetos',
     contact: 'Vamos conversar',
@@ -80,7 +80,7 @@ const copy = {
     availability: 'Open to internships',
     heroEyebrow: 'PORTFOLIO / 2026',
     greeting: 'Hello, world! I’m',
-    role: 'Software developer in progress.',
+    role: 'Backend & automation with Python, C and Java · Computer Science at CESAR School',
     intro: 'I turn real problems into solutions through code, automation, and constant curiosity.',
     viewProjects: 'Explore projects',
     contact: 'Let’s talk',
@@ -299,15 +299,16 @@ export default function App() {
               <p>{t.aboutText}</p>
               <p>{t.aboutText2}</p>
               <div className="about-facts">
-                <div><span className="fact-symbol">01</span><span>{lang === 'pt' ? 'Ciência da Computação' : 'Computer Science'}</span></div>
-                <div><span className="fact-symbol">02</span><span>{lang === 'pt' ? 'Aprendizado na prática' : 'Hands-on learning'}</span></div>
-                <div><span className="fact-symbol">03</span><span>{lang === 'pt' ? 'Foco em resolver problemas' : 'Problem-solving mindset'}</span></div>
+                <div><span className="fact-symbol">01</span><span>{lang === 'pt' ? 'Ciência da Computação · 3º período' : 'Computer Science · 3rd semester'}</span></div>
+                <div><span className="fact-symbol">02</span><span>{lang === 'pt' ? 'Formatura prevista: junho de 2029' : 'Expected graduation: June 2029'}</span></div>
+                <div><span className="fact-symbol">03</span><span>{lang === 'pt' ? 'Aprendizado na prática' : 'Hands-on learning'}</span></div>
+                <div><span className="fact-symbol">04</span><span>{lang === 'pt' ? 'Foco em resolver problemas' : 'Problem-solving mindset'}</span></div>
               </div>
             </div>
             <div className="code-card">
               <div className="code-card-header"><div><span className="file-icon"><Braces size={14} /></span> {t.terminalTitle}</div><span className="code-lang">PYTHON</span></div>
               <div className="code-content">
-                <div className="line-numbers">1<br />2<br />3<br />4<br />5<br />6</div>        
+                <div className="line-numbers">1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</div>        
                 <div className="code-lines">
                   <p><span className="code-purple">class</span> <span className="code-blue">Developer</span>:</p>
                   {lang === 'pt' ? (
@@ -315,6 +316,8 @@ export default function App() {
                       <p className="indent"><span className="code-cyan">nome</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">formacao</span> = <span className="code-yellow">"Ciência da Computação"</span></p>
                       <p className="indent"><span className="code-cyan">instituicao</span> = <span className="code-yellow">"CESAR School"</span></p>
+                      <p className="indent"><span className="code-cyan">periodo</span> = <span className="code-yellow">"3º"</span></p>
+                      <p className="indent"><span className="code-cyan">formatura</span> = <span className="code-yellow">"Jun/2029"</span></p>
                       <p className="indent"><span className="code-cyan">foco</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automação"</span>, <span className="code-yellow">"IA"</span>]</p>
                       <p className="indent"><span className="code-cyan">objetivo</span> = <span className="code-yellow">"Meu próximo estágio"</span></p>
                       <p className="code-comment"># Sempre aprendendo, sempre construindo...</p>
@@ -324,6 +327,8 @@ export default function App() {
                       <p className="indent"><span className="code-cyan">name</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">degree</span> = <span className="code-yellow">"Computer Science"</span></p>
                       <p className="indent"><span className="code-cyan">institution</span> = <span className="code-yellow">"CESAR School"</span></p>
+                      <p className="indent"><span className="code-cyan">semester</span> = <span className="code-yellow">"3rd"</span></p>
+                      <p className="indent"><span className="code-cyan">graduation</span> = <span className="code-yellow">"Jun 2029"</span></p>
                       <p className="indent"><span className="code-cyan">focus</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automation"</span>, <span className="code-yellow">"AI"</span>]</p>
                       <p className="indent"><span className="code-cyan">goal</span> = <span className="code-yellow">"My next internship"</span></p>
                       <p className="code-comment"># Always learning, always building...</p>
