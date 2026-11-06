@@ -36,3 +36,10 @@
 .copy-toast svg {
   flex-shrink: 0;
 }
+
+.contact-email{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin-top:20px;color:#c4ced7;font:12px var(--mono)}
+.contact-email>a{display:inline-flex;align-items:center;gap:8px;overflow-wrap:anywhere;transition:color .2s}
+.contact-email>a:hover{color:var(--green)}
+.contact-email>a svg{color:var(--green);flex-shrink:0}
+.copy-button{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid #2a3743;border-radius:5px;background:rgba(13,18,26,.65);color:#d6dfe7;font:10px var(--mono);cursor:pointer;transition:border-color .2s}
+.copy-button:hover{border-color:#5b7667}
