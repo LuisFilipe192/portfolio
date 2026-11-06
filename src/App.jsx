@@ -7,7 +7,7 @@ import {
 
 const copy = {
   pt: {
-    nav: ['Início', 'Sobre', 'Projetos', 'Stack'],
+    nav: ['Início', 'Sobre', 'Projetos', 'Ferramentas'],
     availability: 'Disponível para estágio',
     heroEyebrow: 'PORTFÓLIO / 2026',
     greeting: 'Olá, mundo! Eu sou',
@@ -76,7 +76,7 @@ const copy = {
     emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
   },
   en: {
-    nav: ['Home', 'About', 'Projects', 'Stack'],
+    nav: ['Home', 'About', 'Projects', 'Toolkit'],
     availability: 'Open to internships',
     heroEyebrow: 'PORTFOLIO / 2026',
     greeting: 'Hello, world! I’m',
@@ -227,7 +227,7 @@ export default function App() {
         <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label={t.mainNav}>
           {t.nav.map((item, index) => (
             <button key={item} onClick={() => scrollTo(['home', 'about', 'projects', 'stack'][index])}>
-              <span className="nav-index">0{index + 1}</span>{item}
+              <span className="nav-index">0{index}</span>{item}
             </button>
           ))}
           <a className="nav-contact" href={mailtoHref}><Mail size={15} /> {t.contact}</a>
