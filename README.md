@@ -1,126 +1,72 @@
-# lf.dev — Hacker Portfolio
+# lf.dev — Portfólio de Luís Filipe
 
-Portfólio pessoal em React + Vite, com visual inspirado em terminal, alternância PT/EN, animações leves e layout responsivo.
+Portfólio pessoal com projetos de backend, automação e sistemas, com visual inspirado em terminal e versões em português e inglês.
 
-## Requisitos
-- Node.js 20+ recomendado
-- npm
-- Conta no GitHub
+**Acesse:** https://luisfilipe192.github.io/portfolio/
 
-## Rodar localmente
+## O que tem no site
+
+- Apresentação, formação e área de interesse
+- Projetos em destaque, com links para o código
+- Ferramentas que uso e meu nível em cada uma
+- Contato por Gmail ou LinkedIn, com opção de copiar o e-mail
+- Download do currículo em PDF
+- Layout responsivo e seletor de idioma PT/EN
+
+## Tecnologias
+
+- React 18
+- Vite 6
+- Lucide React
+- CSS próprio
+- GitHub Actions e GitHub Pages
+
+## Como rodar localmente
+
+É necessário ter o Node.js 20 ou mais recente.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Abra a URL mostrada pelo Vite no terminal.
+Depois, abra o endereço mostrado no terminal.
 
-## Personalização antes de publicar
-
-Abra `src/App.jsx` e atualize:
-1. `email`: substitua `seu.email@example.com` pelo seu e-mail profissional.
-2. `github`: substitua `SEU-USUARIO` pelo seu usuário do GitHub.
-3. `linkedin`: substitua `SEU-PERFIL` pelo seu perfil real do LinkedIn.
-4. Em `projects`, troque cada link de exemplo (`https://github.com/`) pela URL do repositório real correspondente.
-5. Revise os textos para que reflitam exatamente o estado atual dos seus projetos.
-
-O site usa descrições baseadas nos projetos que você já desenvolveu/está desenvolvendo. Mantenha os status honestos e não inclua ferramentas ou funcionalidades que ainda não implementou.
-
-## Publicar no GitHub Pages
-
-### Opção A — GitHub Actions (recomendada)
-
-1. Crie um repositório no GitHub, por exemplo `portfolio`.
-2. Envie todos os arquivos deste projeto para a branch `main`.
-3. No arquivo `vite.config.js`, ajuste `base`:
-   - Repositório `https://SEU-USUARIO.github.io/portfolio/`: use `base: '/portfolio/'`.
-   - Repositório especial `https://SEU-USUARIO.github.io/`: use `base: '/'`.
-4. No GitHub, abra **Settings → Pages**.
-5. Em **Build and deployment**, escolha **GitHub Actions**.
-6. Crie `.github/workflows/deploy.yml` com o conteúdo abaixo.
-7. Faça commit e push. Acompanhe a aba **Actions**; quando terminar, o GitHub mostrará a URL publicada.
-
-```yaml
-name: Deploy portfolio to GitHub Pages
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - name: Install dependencies
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-### Opção B — deploy com gh-pages
-
-Depois de ajustar `base` em `vite.config.js`:
+Para gerar e testar a versão de produção:
 
 ```bash
-npm install
-npm run deploy
+npm run build
+npm run preview
 ```
-
-Depois, em **Settings → Pages**, selecione a branch `gh-pages` e a pasta `/ (root)` se necessário.
 
 ## Estrutura
 
 ```text
-portfolio-hacker-react/
-├── index.html
-├── package.json
-├── vite.config.js
+.
+├── .github/workflows/deploy.yml   # Publicação no GitHub Pages
 ├── public/
-└── src/
-    ├── App.jsx
-    ├── main.jsx
-    └── styles.css
+│   ├── assets/                    # Currículo em PDF
+│   ├── favicon.svg
+│   └── og-image.png               # Imagem de compartilhamento
+├── src/
+│   ├── assets/projects/           # Prévias opcionais dos projetos
+│   ├── App.jsx                    # Conteúdo, traduções e componentes
+│   ├── main.jsx
+│   └── styles.css
+├── index.html                     # Metadados de SEO e compartilhamento
+└── vite.config.js
 ```
 
-## Checklist antes de compartilhar com recrutadores
+## Como atualizar o conteúdo
 
-- [ ] E-mail, GitHub e LinkedIn atualizados
-- [ ] Cada card aponta para o repositório correto
-- [ ] Repositórios têm README com objetivo, tecnologias, execução e capturas de tela
-- [ ] Conferir visual em celular e desktop
-- [ ] Rodar `npm run build` sem erros
-- [ ] Conferir alternância PT/EN
-- [ ] Não publicar credenciais, tokens ou dados de clientes
+- **Textos e traduções:** edite o objeto `copy` em `src/App.jsx`.
+- **Projetos:** edite `projectItems` em cada idioma e a lista `projects` em `src/App.jsx`.
+- **Prévias dos projetos:** siga as instruções de `src/assets/projects/README.md`.
+- **Currículo:** substitua `public/assets/curriculo-luis-filipe.pdf`, mantendo o nome do arquivo.
+- **Imagem de compartilhamento:** substitua `public/og-image.png` por outra de 1200x630.
+
+## Publicação
+
+Cada push na branch `main` compila o projeto e publica o site no GitHub Pages pelo GitHub Actions.
+
+Se o repositório mudar de nome, atualize `base` em `vite.config.js` e os endereços em `index.html`.
