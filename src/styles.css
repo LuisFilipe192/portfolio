@@ -43,3 +43,5 @@
 .contact-email>a svg{color:var(--green);flex-shrink:0}
 .copy-button{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border:1px solid #2a3743;border-radius:5px;background:rgba(13,18,26,.65);color:#d6dfe7;font:10px var(--mono);cursor:pointer;transition:border-color .2s}
 .copy-button:hover{border-color:#5b7667}
+
+.project-card .project-note{align-items:flex-start;margin:-6px 0 18px;line-height:1.6}
