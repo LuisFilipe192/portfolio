@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDownRight, ArrowUpRight, Braces, Check, ChevronRight, Code2,
-  Command, Cpu, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
+  Command, Copy, Cpu, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
   Wallet, X, Zap
 } from 'lucide-react'
 
@@ -51,7 +51,10 @@ const copy = {
     backTop: 'VOLTAR AO TOPO',
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
-    copied: 'E-mail copiado',
+    copied: '> e-mail copiado com sucesso',
+    copyEmail: 'Copiar e-mail',
+    copiedShort: 'Copiado',
+    emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
   },
   en: {
     nav: ['Home', 'About', 'Projects', 'Stack'],
@@ -98,7 +101,10 @@ const copy = {
     backTop: 'BACK TO TOP',
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
-    copied: 'Email copied',
+    copied: '> email copied successfully',
+    copyEmail: 'Copy email',
+    copiedShort: 'Copied',
+    emailSubject: 'Internship Opportunity — Software Development',
   },
 }
 
@@ -133,7 +139,8 @@ export default function App() {
   const [emailCopied, setEmailCopied] = useState(false)
   
   const t = copy[lang]
-  const email = 'luisfelipe192@gmail.com'
+  const email = 'luisfelipe192ss@gmail.com'
+  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(t.emailSubject)}`
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
 
@@ -163,7 +170,7 @@ export default function App() {
         setEmailCopied(false)
       }, 2500)
     } catch {
-      window.location.href = `mailto:${email}`
+      window.location.href = mailtoHref
     }
   }
 
@@ -183,7 +190,7 @@ export default function App() {
               <span className="nav-index">0{index + 1}</span>{item}
             </button>
           ))}
-          <a className="nav-contact" href={`mailto:${email}`}><Mail size={15} /> {t.contact}</a>
+          <a className="nav-contact" href={mailtoHref}><Mail size={15} /> {t.contact}</a>
         </nav>
         <div className="top-actions">
           <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label="Change language">
@@ -205,7 +212,7 @@ export default function App() {
             <p className="hero-intro">{t.intro}</p>
             <div className="hero-ctas">
               <button className="button button-primary" onClick={() => scrollTo('projects')}>{t.viewProjects}<ArrowDownRight size={17} /></button>
-              <a className="button button-ghost" href={`mailto:${email}`}>{t.contact}<ArrowUpRight size={16} /></a>
+              <a className="button button-ghost" href={mailtoHref}>{t.contact}<ArrowUpRight size={16} /></a>
             </div>
             <div className="hero-socials">
               <a href={github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={12} /></a>
@@ -334,17 +341,15 @@ export default function App() {
               <p className="eyebrow"><span className="eyebrow-line" />{t.contactLabel}</p>
               <h2>{t.contactTitle}</h2>
               <p>{t.contactText}</p>
+              <div className="contact-email">
+                <a href={mailtoHref}><Mail size={14} />{email}</a>
+                <button type="button" className="copy-button" onClick={copyEmail} aria-label={t.copyEmail}>
+                  {emailCopied ? <Check size={13} /> : <Copy size={13} />}
+                  {emailCopied ? t.copiedShort : t.copyEmail}
+                </button>
+              </div>
               <div className="contact-actions">
-                <a
-                  className="button button-primary"
-                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(
-                    lang === 'pt'
-                      ? 'Oportunidade de estágio — Desenvolvimento de Software'
-                      : 'Internship Opportunity — Software Development'
-                  )}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="button button-primary" href={mailtoHref}>
                   <Mail size={16} />
                   {t.emailButton}
                   <ArrowUpRight size={15} />
@@ -353,11 +358,7 @@ export default function App() {
               {emailCopied && (
                 <div className="copy-toast" role="status" aria-live="polite">
                   <Check size={16} />
-                  <span>
-                    {lang === 'pt'
-                      ? '> e-mail copiado com sucesso'
-                      : '> email copied successfully'}
-                  </span>
+                  <span>{t.copied}</span>
                 </div>
               )}            
             </div>
