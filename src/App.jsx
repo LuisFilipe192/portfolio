@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDownRight, ArrowUpRight, Braces, Check, ChevronRight, Code2,
-  Command, Copy, Cpu, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
+  Command, Copy, Cpu, Download, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
   Wallet, X, Zap
 } from 'lucide-react'
 
@@ -15,6 +15,7 @@ const copy = {
     intro: 'Transformo problemas reais em soluções com código, automação e curiosidade constante.',
     viewProjects: 'Explorar projetos',
     contact: 'Vamos conversar',
+    resume: 'Baixar currículo',
     scroll: 'ROLE PARA EXPLORAR',
     aboutLabel: '01 / SOBRE MIM',
     aboutTitle: 'Código com propósito.',
@@ -65,6 +66,7 @@ const copy = {
     intro: 'I turn real problems into solutions through code, automation, and constant curiosity.',
     viewProjects: 'Explore projects',
     contact: 'Let’s talk',
+    resume: 'Download résumé',
     scroll: 'SCROLL TO EXPLORE',
     aboutLabel: '01 / ABOUT ME',
     aboutTitle: 'Code with purpose.',
@@ -148,6 +150,7 @@ export default function App() {
   const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(t.emailSubject)}`
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
+  const resumeUrl = `${import.meta.env.BASE_URL}assets/curriculo-luis-filipe.pdf`
 
   useEffect(() => {
     const phrase = 'software.create(impact);'
@@ -218,6 +221,7 @@ export default function App() {
             <div className="hero-ctas">
               <button className="button button-primary" onClick={() => scrollTo('projects')}>{t.viewProjects}<ArrowDownRight size={17} /></button>
               <a className="button button-ghost" href={mailtoHref}>{t.contact}<ArrowUpRight size={16} /></a>
+              <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a>
             </div>
             <div className="hero-socials">
               <a href={github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={12} /></a>
@@ -364,7 +368,8 @@ export default function App() {
                   {t.emailButton}
                   <ArrowUpRight size={15} />
                 </a>
-              <a className="button button-ghost" href={github} target="_blank" rel="noreferrer"><Github size={16} />{t.githubButton}<ArrowUpRight size={15} /></a></div>
+              <a className="button button-ghost" href={github} target="_blank" rel="noreferrer"><Github size={16} />{t.githubButton}<ArrowUpRight size={15} /></a>
+              <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a></div>
               {emailCopied && (
                 <div className="copy-toast" role="status" aria-live="polite">
                   <Check size={16} />
