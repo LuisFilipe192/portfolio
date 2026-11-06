@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {
   ArrowDownRight, ArrowUpRight, Braces, Check, ChevronRight, Code2,
   Command, Cpu, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
-  X, Zap
+  Wallet, X, Zap
 } from 'lucide-react'
 
 const copy = {
@@ -35,7 +35,7 @@ const copy = {
       { id: 'processflow', title: 'ProcessFlow', type: 'Sistemas · C', desc: 'Orquestrador de processos com execução de tarefas, gerenciamento de processos filhos e suporte planejado a pipelines. Projeto focado em conceitos de sistemas operacionais.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'Em desenvolvimento', icon: 'terminal' },
       { id: 'automation', title: 'Automação contábil', type: 'Automação · Python', desc: 'Scripts para reduzir tarefas repetitivas em sistema contábil web, além de processamento de PDFs e geração de planilhas para agilizar rotinas operacionais.', tags: ['Python', 'PyAutoGUI', 'OpenPyXL'], status: 'Experiência prática', icon: 'zap' },
       { id: 'bombermancli', title: 'BombermanCLI', type: 'Jogo · C', desc: 'Jogo inspirado em Bomberman, com interface gráfica, movimentação do jogador, mecânica de bombas e detecção de colisões.', tags: ['C', 'Lógica de Jogos', 'Algoritmos'], status: 'Projeto acadêmico', icon: 'code' },
-      { id: 'java', title: 'Estudos de Java & POO', type: 'Desenvolvimento · Java', desc: 'Projetos acadêmicos para praticar orientação a objetos, separação de responsabilidades, arquitetura em camadas e testes automatizados.', tags: ['Java', 'POO', 'JUnit'], status: 'Em evolução', icon: 'braces' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'Aplicação web de finanças pessoais que substitui planilhas soltas: registra receitas e despesas, define orçamento por categoria e mostra no dashboard para onde o dinheiro foi a cada mês.', tags: ['Django REST', 'React', 'Playwright'], status: 'Em desenvolvimento', icon: 'wallet' },
     ],
     stackLabel: '03 / FERRAMENTAS',
     stackTitle: 'Ferramentas do meu dia a dia',
@@ -82,7 +82,7 @@ const copy = {
       { id: 'processflow', title: 'ProcessFlow', type: 'Systems · C', desc: 'A process orchestrator for task execution, child-process management, and planned pipeline support. Focused on operating systems concepts.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'In development', icon: 'terminal' },
       { id: 'automation', title: 'Accounting automation', type: 'Automation · Python', desc: 'Scripts that reduce repetitive tasks in a web-based accounting system, plus PDF processing and spreadsheet generation for operational workflows.', tags: ['Python', 'PyAutoGUI', 'OpenPyXL'], status: 'Hands-on experience', icon: 'zap' },
       { id: 'bombermancli', title: 'BombermanCLI', type: 'Game · C', desc: 'A Bomberman-inspired game featuring a graphical interface, player movement, bomb mechanics, and collision detection.', tags: ['C', 'Game Logic', 'Algorithms'], status: 'Academic project', icon: 'code' },
-      { id: 'java', title: 'Java & OOP studies', type: 'Development · Java', desc: 'Academic projects to practice object-oriented programming, separation of concerns, layered architecture, and automated tests.', tags: ['Java', 'OOP', 'JUnit'], status: 'In progress', icon: 'braces' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'A personal finance web app that replaces scattered spreadsheets: it tracks income and expenses, sets budgets per category, and shows on a dashboard where the money went each month.', tags: ['Django REST', 'React', 'Playwright'], status: 'In development', icon: 'wallet' },
     ],
     stackLabel: '03 / TOOLKIT',
     stackTitle: 'Tools in my workflow',
@@ -106,7 +106,7 @@ const projects = [
   { id: 'processflow', number: '01', link: 'https://github.com/LuisFilipe192/OrquestradorDeProcessos.git', accent: 'green' },
   { id: 'automation', number: '02', link: 'https://github.com/LuisFilipe192/automacao_de_Livro_Diario.projeto_pessoal.git', accent: 'purple' },
   { id: 'bombermancli', number: '03', link: 'https://github.com/kaik-e/BombermanCLI.git', accent: 'blue' },
-  { id: 'java', number: '04', link: 'https://github.com/LuisFilipe192/AutoHub.git', accent: 'orange' },
+  { id: 'financeflow', number: '04', link: 'https://github.com/LuisFilipe192/FinanceFlow', accent: 'orange' },
 ]
 
 const technologies = [
@@ -122,7 +122,7 @@ function IconFor({ name, size = 20 }) {
   const props = { size, strokeWidth: 1.7 }
   if (name === 'terminal') return <Terminal {...props} />
   if (name === 'zap') return <Zap {...props} />
-  if (name === 'braces') return <Braces {...props} />
+  if (name === 'wallet') return <Wallet {...props} />
   return <Code2 {...props} />
 }
 
