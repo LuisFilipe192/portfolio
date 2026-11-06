@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDownRight, ArrowUpRight, Braces, Check, ChevronRight, Code2,
-  Command, Cpu, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
-  X, Zap
+  Command, Copy, Cpu, Download, ExternalLink, Github, Globe2, Mail, Menu, Terminal,
+  Wallet, X, Zap
 } from 'lucide-react'
 
 const copy = {
@@ -11,10 +11,11 @@ const copy = {
     availability: 'Disponível para estágio',
     heroEyebrow: 'PORTFÓLIO / 2026',
     greeting: 'Olá, mundo! Eu sou',
-    role: 'Desenvolvedor em formação.',
+    role: 'Backend e automação com Python, C e Java · Ciência da Computação na CESAR School',
     intro: 'Transformo problemas reais em soluções com código, automação e curiosidade constante.',
     viewProjects: 'Explorar projetos',
     contact: 'Vamos conversar',
+    resume: 'Baixar currículo',
     scroll: 'ROLE PARA EXPLORAR',
     aboutLabel: '01 / SOBRE MIM',
     aboutTitle: 'Código com propósito.',
@@ -32,14 +33,22 @@ const copy = {
     featured: 'DESTAQUE',
     codeLabel: 'CÓDIGO',
     projectItems: [
-      { id: 'processflow', title: 'ProcessFlow', type: 'Sistemas · C', desc: 'Orquestrador de processos com execução de tarefas, gerenciamento de processos filhos e suporte planejado a pipelines. Projeto focado em conceitos de sistemas operacionais.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'Em desenvolvimento', icon: 'terminal' },
-      { id: 'automation', title: 'Automação contábil', type: 'Automação · Python', desc: 'Scripts para reduzir tarefas repetitivas em sistema contábil web, além de processamento de PDFs e geração de planilhas para agilizar rotinas operacionais.', tags: ['Python', 'PyAutoGUI', 'OpenPyXL'], status: 'Experiência prática', icon: 'zap' },
-      { id: 'bombermancli', title: 'BombermanCLI', type: 'Jogo · C', desc: 'Jogo inspirado em Bomberman, com interface gráfica, movimentação do jogador, mecânica de bombas e detecção de colisões.', tags: ['C', 'Lógica de Jogos', 'Algoritmos'], status: 'Projeto acadêmico', icon: 'code' },
-      { id: 'java', title: 'Estudos de Java & POO', type: 'Desenvolvimento · Java', desc: 'Projetos acadêmicos para praticar orientação a objetos, separação de responsabilidades, arquitetura em camadas e testes automatizados.', tags: ['Java', 'POO', 'JUnit'], status: 'Em evolução', icon: 'braces' },
+      { id: 'processflow', title: 'ProcessFlow', type: 'Sistemas · C', desc: 'Orquestrador de processos com execução sequencial, paralela e por pipes, além de gerenciamento de processos filhos. Projeto focado em conceitos de sistemas operacionais.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'Em desenvolvimento', icon: 'terminal', previewAlt: 'Terminal mostrando o ProcessFlow executando tarefas em processos filhos' },
+      { id: 'automation', title: 'Automação contábil', type: 'Automação · Python', desc: 'Gera o Livro Diário em Excel a partir de PDFs de rateio e planilhas de caixa, com os saldos já calculados. Um trabalho manual que levava 5 dias passou a levar 5 minutos, com menos risco de erro.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Experiência prática', icon: 'zap', previewAlt: 'Planilha do Livro Diário gerada pela automação, com entradas, saídas e saldo por dia' },
+      { id: 'bombermancli', title: 'BombermanCLI', type: 'Jogo · C', desc: 'Jogo inspirado em Bomberman, com interface gráfica, movimentação do jogador, mecânica de bombas e detecção de colisões.', note: 'Projeto em equipe (3 pessoas). Minha parte: toda a programação do jogo; os colegas cuidaram de Makefile, vídeo e ajustes finais.', tags: ['C', 'Lógica de Jogos', 'Algoritmos'], status: 'Projeto acadêmico', icon: 'code', previewAlt: 'Partida do BombermanCLI com o jogador, bombas, blocos e inimigos no mapa' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'Aplicação web de finanças pessoais que substitui planilhas soltas: registra receitas e despesas, define orçamento por categoria e mostra no dashboard para onde o dinheiro foi a cada mês.', tags: ['Django REST', 'React', 'Playwright'], status: 'Em desenvolvimento', icon: 'wallet', previewAlt: 'Dashboard do FinanceFlow com resumo do mês e gráficos de gastos por categoria' },
     ],
     stackLabel: '03 / FERRAMENTAS',
     stackTitle: 'Ferramentas do meu dia a dia',
     stackText: 'Tecnologias que utilizo ou estou desenvolvendo na prática. A lista acompanha minha evolução — não é uma promessa de domínio avançado em tudo.',
+    technologies: [
+      { name: 'Python', category: 'Automação e scripts', level: 'Uso prático' },
+      { name: 'C', category: 'Sistemas e estruturas de dados', level: 'Aprendendo na prática' },
+      { name: 'Java', category: 'POO e fundamentos de backend', level: 'Em evolução' },
+      { name: 'JavaScript', category: 'Desenvolvimento web', level: 'Fundamentos' },
+      { name: 'HTML / CSS', category: 'Interfaces responsivas', level: 'Fundamentos' },
+      { name: 'Git / GitHub', category: 'Controle de versão', level: 'Uso diário' },
+    ],
     softLabel: 'TAMBÉM POR AQUI',
     softSkills: ['Resolução de problemas', 'Aprendizado contínuo', 'Automação de tarefas', 'Trabalho em equipe'],
     contactLabel: '04 / PRÓXIMO PASSO',
@@ -49,19 +58,33 @@ const copy = {
     githubButton: 'Ver GitHub',
     footer: 'Feito com curiosidade, música e código.',
     backTop: 'VOLTAR AO TOPO',
+    pageTitle: 'Luís Filipe | Desenvolvedor de Software',
+    homeLabel: 'Início',
+    mainNav: 'Navegação principal',
+    changeLanguage: 'Mudar idioma',
+    terminalLabel: 'Terminal decorativo com código',
+    focusList: ['Desenvolvimento de Software', 'Automação com Python', 'Backend e Sistemas'],
+    processDone: 'processo concluído com curiosidade',
+    systemOnline: 'SISTEMA ONLINE',
+    saved: 'salvo',
+    contactIndex: ['VAMOS', 'CONVERSAR'],
     menuOpen: 'Abrir menu',
     menuClose: 'Fechar menu',
-    copied: 'E-mail copiado',
+    copied: '> e-mail copiado com sucesso',
+    copyEmail: 'Copiar e-mail',
+    copiedShort: 'Copiado',
+    emailSubject: 'Oportunidade de estágio — Desenvolvimento de Software',
   },
   en: {
     nav: ['Home', 'About', 'Projects', 'Stack'],
     availability: 'Open to internships',
     heroEyebrow: 'PORTFOLIO / 2026',
     greeting: 'Hello, world! I’m',
-    role: 'Software developer in progress.',
+    role: 'Backend & automation with Python, C and Java · Computer Science at CESAR School',
     intro: 'I turn real problems into solutions through code, automation, and constant curiosity.',
     viewProjects: 'Explore projects',
     contact: 'Let’s talk',
+    resume: 'Download résumé',
     scroll: 'SCROLL TO EXPLORE',
     aboutLabel: '01 / ABOUT ME',
     aboutTitle: 'Code with purpose.',
@@ -79,14 +102,22 @@ const copy = {
     featured: 'FEATURED',
     codeLabel: 'SOURCE',
     projectItems: [
-      { id: 'processflow', title: 'ProcessFlow', type: 'Systems · C', desc: 'A process orchestrator for task execution, child-process management, and planned pipeline support. Focused on operating systems concepts.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'In development', icon: 'terminal' },
-      { id: 'automation', title: 'Accounting automation', type: 'Automation · Python', desc: 'Scripts that reduce repetitive tasks in a web-based accounting system, plus PDF processing and spreadsheet generation for operational workflows.', tags: ['Python', 'PyAutoGUI', 'OpenPyXL'], status: 'Hands-on experience', icon: 'zap' },
-      { id: 'bombermancli', title: 'BombermanCLI', type: 'Game · C', desc: 'A Bomberman-inspired game featuring a graphical interface, player movement, bomb mechanics, and collision detection.', tags: ['C', 'Game Logic', 'Algorithms'], status: 'Academic project', icon: 'code' },
-      { id: 'java', title: 'Java & OOP studies', type: 'Development · Java', desc: 'Academic projects to practice object-oriented programming, separation of concerns, layered architecture, and automated tests.', tags: ['Java', 'OOP', 'JUnit'], status: 'In progress', icon: 'braces' },
+      { id: 'processflow', title: 'ProcessFlow', type: 'Systems · C', desc: 'A process orchestrator with sequential, parallel, and pipe-based execution, plus child-process management. Focused on operating systems concepts.', tags: ['C', 'Linux / WSL', 'fork / exec'], status: 'In development', icon: 'terminal', previewAlt: 'Terminal showing ProcessFlow running tasks in child processes' },
+      { id: 'automation', title: 'Accounting automation', type: 'Automation · Python', desc: 'Generates the accounting journal in Excel from apportionment PDFs and cash spreadsheets, with balances already calculated. Manual work that took 5 days now takes 5 minutes, with less risk of error.', tags: ['Python', 'pdfplumber', 'OpenPyXL'], status: 'Hands-on experience', icon: 'zap', previewAlt: 'Accounting journal spreadsheet generated by the automation, with daily inflows, outflows, and balance' },
+      { id: 'bombermancli', title: 'BombermanCLI', type: 'Game · C', desc: 'A Bomberman-inspired game featuring a graphical interface, player movement, bomb mechanics, and collision detection.', note: 'Team project (3 people). My part: all of the game programming; my teammates handled the Makefile, video, and final adjustments.', tags: ['C', 'Game Logic', 'Algorithms'], status: 'Academic project', icon: 'code', previewAlt: 'BombermanCLI match with the player, bombs, blocks, and enemies on the map' },
+      { id: 'financeflow', title: 'FinanceFlow', type: 'Web · Python + React', desc: 'A personal finance web app that replaces scattered spreadsheets: it tracks income and expenses, sets budgets per category, and shows on a dashboard where the money went each month.', tags: ['Django REST', 'React', 'Playwright'], status: 'In development', icon: 'wallet', previewAlt: 'FinanceFlow dashboard with a monthly summary and spending charts by category' },
     ],
     stackLabel: '03 / TOOLKIT',
     stackTitle: 'Tools in my workflow',
     stackText: 'Technologies I use or am actively learning by building. This list evolves with me — it is not a claim of advanced mastery in everything.',
+    technologies: [
+      { name: 'Python', category: 'Automation & scripting', level: 'Practical use' },
+      { name: 'C', category: 'Systems & data structures', level: 'Learning by building' },
+      { name: 'Java', category: 'OOP & backend foundations', level: 'Growing' },
+      { name: 'JavaScript', category: 'Web development', level: 'Foundations' },
+      { name: 'HTML / CSS', category: 'Responsive interfaces', level: 'Foundations' },
+      { name: 'Git / GitHub', category: 'Version control', level: 'Daily workflow' },
+    ],
     softLabel: 'ALSO IN MY TOOLKIT',
     softSkills: ['Problem solving', 'Continuous learning', 'Task automation', 'Teamwork'],
     contactLabel: '04 / NEXT STEP',
@@ -96,33 +127,42 @@ const copy = {
     githubButton: 'View GitHub',
     footer: 'Made with curiosity, music, and code.',
     backTop: 'BACK TO TOP',
+    pageTitle: 'Luís Filipe | Software Developer',
+    homeLabel: 'Home',
+    mainNav: 'Main navigation',
+    changeLanguage: 'Change language',
+    terminalLabel: 'Decorative code terminal',
+    focusList: ['Software Development', 'Python Automation', 'Backend & Systems'],
+    processDone: 'process completed with curiosity',
+    systemOnline: 'SYSTEM ONLINE',
+    saved: 'saved',
+    contactIndex: ['LET’S', 'CONNECT'],
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
-    copied: 'Email copied',
+    copied: '> email copied successfully',
+    copyEmail: 'Copy email',
+    copiedShort: 'Copied',
+    emailSubject: 'Internship Opportunity — Software Development',
   },
 }
+
+// Prévias opcionais: um arquivo <id-do-projeto>.<extensão> em src/assets/projects/.
+// Sem arquivo, o card é renderizado sem imagem (veja o README dessa pasta).
+const previewFiles = import.meta.glob('./assets/projects/*.{png,jpg,jpeg,webp,gif}', { eager: true, query: '?url', import: 'default' })
+const previewFor = (id) => Object.entries(previewFiles).find(([path]) => path.split('/').pop().split('.')[0] === id)?.[1]
 
 const projects = [
   { id: 'processflow', number: '01', link: 'https://github.com/LuisFilipe192/OrquestradorDeProcessos.git', accent: 'green' },
   { id: 'automation', number: '02', link: 'https://github.com/LuisFilipe192/automacao_de_Livro_Diario.projeto_pessoal.git', accent: 'purple' },
   { id: 'bombermancli', number: '03', link: 'https://github.com/kaik-e/BombermanCLI.git', accent: 'blue' },
-  { id: 'java', number: '04', link: 'https://github.com/LuisFilipe192/AutoHub.git', accent: 'orange' },
-]
-
-const technologies = [
-  { name: 'Python', category: 'Automation & scripting', level: 'Practical use' },
-  { name: 'C', category: 'Systems & data structures', level: 'Learning by building' },
-  { name: 'Java', category: 'OOP & backend foundations', level: 'Growing' },
-  { name: 'JavaScript', category: 'Web development', level: 'Foundations' },
-  { name: 'HTML / CSS', category: 'Responsive interfaces', level: 'Foundations' },
-  { name: 'Git / GitHub', category: 'Version control', level: 'Daily workflow' },
+  { id: 'financeflow', number: '04', link: 'https://github.com/LuisFilipe192/FinanceFlow', accent: 'orange' },
 ]
 
 function IconFor({ name, size = 20 }) {
   const props = { size, strokeWidth: 1.7 }
   if (name === 'terminal') return <Terminal {...props} />
   if (name === 'zap') return <Zap {...props} />
-  if (name === 'braces') return <Braces {...props} />
+  if (name === 'wallet') return <Wallet {...props} />
   return <Code2 {...props} />
 }
 
@@ -133,9 +173,16 @@ export default function App() {
   const [emailCopied, setEmailCopied] = useState(false)
   
   const t = copy[lang]
-  const email = 'luisfelipe192@gmail.com'
+  const email = 'luisfelipe192ss@gmail.com'
+  const mailtoHref = `mailto:${email}?subject=${encodeURIComponent(t.emailSubject)}`
   const github = 'https://github.com/LuisFilipe192'
   const linkedin = 'https://www.linkedin.com/in/luis-filipe192'
+  const resumeUrl = `${import.meta.env.BASE_URL}assets/curriculo-luis-filipe.pdf`
+
+  useEffect(() => {
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en'
+    document.title = t.pageTitle
+  }, [lang, t.pageTitle])
 
   useEffect(() => {
     const phrase = 'software.create(impact);'
@@ -163,7 +210,7 @@ export default function App() {
         setEmailCopied(false)
       }, 2500)
     } catch {
-      window.location.href = `mailto:${email}`
+      window.location.href = mailtoHref
     }
   }
 
@@ -173,20 +220,20 @@ export default function App() {
       <div className="ambient ambient-one" />
       <div className="ambient ambient-two" />
       <header className="topbar">
-        <a className="brand" href="#home" aria-label="Home">
+        <a className="brand" href="#home" aria-label={t.homeLabel}>
           <span className="brand-mark"><Terminal size={19} /></span>
           <span>lf<span className="brand-dot">.</span>dev</span>
         </a>
-        <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label="Main navigation">
+        <nav className={`nav-links ${menuOpen ? 'nav-open' : ''}`} aria-label={t.mainNav}>
           {t.nav.map((item, index) => (
             <button key={item} onClick={() => scrollTo(['home', 'about', 'projects', 'stack'][index])}>
               <span className="nav-index">0{index + 1}</span>{item}
             </button>
           ))}
-          <a className="nav-contact" href={`mailto:${email}`}><Mail size={15} /> {t.contact}</a>
+          <a className="nav-contact" href={mailtoHref}><Mail size={15} /> {t.contact}</a>
         </nav>
         <div className="top-actions">
-          <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label="Change language">
+          <button className="language-toggle" onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')} aria-label={t.changeLanguage}>
             <Globe2 size={15} /><span>{lang === 'pt' ? 'PT' : 'EN'}</span><span className="lang-divider">/</span><span className="lang-muted">{lang === 'pt' ? 'EN' : 'PT'}</span>
           </button>
           <button className="mobile-menu" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? t.menuClose : t.menuOpen}>
@@ -200,19 +247,20 @@ export default function App() {
           <div className="hero-copy">
             <div className="status-pill"><span className="status-pulse" />{t.availability}</div>
             <p className="eyebrow"><span className="eyebrow-line" />{t.heroEyebrow}</p>
-            <h1>{t.greeting}<br /><span className="hero-name">Luis Filipe<span className="green">.</span></span></h1>
+            <h1>{t.greeting}<br /><span className="hero-name">Luís Filipe<span className="green">.</span></span></h1>
             <h2>{t.role}</h2>
             <p className="hero-intro">{t.intro}</p>
             <div className="hero-ctas">
               <button className="button button-primary" onClick={() => scrollTo('projects')}>{t.viewProjects}<ArrowDownRight size={17} /></button>
-              <a className="button button-ghost" href={`mailto:${email}`}>{t.contact}<ArrowUpRight size={16} /></a>
+              <a className="button button-ghost" href={mailtoHref}>{t.contact}<ArrowUpRight size={16} /></a>
+              <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a>
             </div>
             <div className="hero-socials">
               <a href={github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub <ArrowUpRight size={12} /></a>
               <a href={linkedin} target="_blank" rel="noreferrer"><ExternalLink size={16} /> LinkedIn <ArrowUpRight size={12} /></a>
             </div>
           </div>
-          <div className="hero-visual" aria-label="Decorative code terminal">
+          <div className="hero-visual" aria-label={t.terminalLabel}>
             <div className="visual-grid" />
             <div className="orbit orbit-a" /><div className="orbit orbit-b" />
             <div className="terminal-window">
@@ -227,14 +275,12 @@ export default function App() {
                 <h3>luis_filipe</h3>
                 <p><span className="term-green">➜</span> <span className="term-blue">~</span> cat focus.txt</p>
                 <ul className="terminal-list">
-                  <li><span>+</span> Software Development</li>
-                  <li><span>+</span> Python Automation</li>
-                  <li><span>+</span> Backend & Systems</li>
+                  {t.focusList.map(item => <li key={item}><span>+</span> {item}</li>)}
                 </ul>
                 <p><span className="term-green">➜</span> <span className="term-blue">~</span> <span className="typed-text">{typed}</span><span className="cursor">▋</span></p>
-                <div className="terminal-output"><Check size={14} /> process completed with curiosity</div>
+                <div className="terminal-output"><Check size={14} /> {t.processDone}</div>
               </div>
-              <div className="terminal-bottom"><span><i /> SYSTEM ONLINE</span><span>UTF-8</span><span>Ln 24, Col 08</span></div>
+              <div className="terminal-bottom"><span><i /> {t.systemOnline}</span><span>UTF-8</span><span>Ln 24, Col 08</span></div>
             </div>
             <div className="floating-chip chip-top"><Code2 size={15} /><span>clean_code()</span></div>
             <div className="floating-chip chip-bottom"><Cpu size={15} /><span>always_learning = true</span></div>
@@ -253,31 +299,36 @@ export default function App() {
               <p>{t.aboutText}</p>
               <p>{t.aboutText2}</p>
               <div className="about-facts">
-                <div><span className="fact-symbol">01</span><span>{lang === 'pt' ? 'Ciência da Computação' : 'Computer Science'}</span></div>
-                <div><span className="fact-symbol">02</span><span>{lang === 'pt' ? 'Aprendizado na prática' : 'Hands-on learning'}</span></div>
-                <div><span className="fact-symbol">03</span><span>{lang === 'pt' ? 'Foco em resolver problemas' : 'Problem-solving mindset'}</span></div>
+                <div><span className="fact-symbol">01</span><span>{lang === 'pt' ? 'Ciência da Computação · 3º período' : 'Computer Science · 3rd semester'}</span></div>
+                <div><span className="fact-symbol">02</span><span>{lang === 'pt' ? 'Formatura prevista: junho de 2029' : 'Expected graduation: June 2029'}</span></div>
+                <div><span className="fact-symbol">03</span><span>{lang === 'pt' ? 'Aprendizado na prática' : 'Hands-on learning'}</span></div>
+                <div><span className="fact-symbol">04</span><span>{lang === 'pt' ? 'Foco em resolver problemas' : 'Problem-solving mindset'}</span></div>
               </div>
             </div>
             <div className="code-card">
               <div className="code-card-header"><div><span className="file-icon"><Braces size={14} /></span> {t.terminalTitle}</div><span className="code-lang">PYTHON</span></div>
               <div className="code-content">
-                <div className="line-numbers">1<br />2<br />3<br />4<br />5<br />6</div>        
+                <div className="line-numbers">1<br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9</div>        
                 <div className="code-lines">
                   <p><span className="code-purple">class</span> <span className="code-blue">Developer</span>:</p>
                   {lang === 'pt' ? (
                     <>
-                      <p className="indent"><span className="code-cyan">nome</span> = <span className="code-yellow">"Luis Felipe"</span></p>
+                      <p className="indent"><span className="code-cyan">nome</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">formacao</span> = <span className="code-yellow">"Ciência da Computação"</span></p>
                       <p className="indent"><span className="code-cyan">instituicao</span> = <span className="code-yellow">"CESAR School"</span></p>
+                      <p className="indent"><span className="code-cyan">periodo</span> = <span className="code-yellow">"3º"</span></p>
+                      <p className="indent"><span className="code-cyan">formatura</span> = <span className="code-yellow">"Jun/2029"</span></p>
                       <p className="indent"><span className="code-cyan">foco</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automação"</span>, <span className="code-yellow">"IA"</span>]</p>
                       <p className="indent"><span className="code-cyan">objetivo</span> = <span className="code-yellow">"Meu próximo estágio"</span></p>
                       <p className="code-comment"># Sempre aprendendo, sempre construindo...</p>
                     </>
                   ) : (
                     <>
-                      <p className="indent"><span className="code-cyan">name</span> = <span className="code-yellow">"Luis Felipe"</span></p>
+                      <p className="indent"><span className="code-cyan">name</span> = <span className="code-yellow">"Luís Filipe"</span></p>
                       <p className="indent"><span className="code-cyan">degree</span> = <span className="code-yellow">"Computer Science"</span></p>
                       <p className="indent"><span className="code-cyan">institution</span> = <span className="code-yellow">"CESAR School"</span></p>
+                      <p className="indent"><span className="code-cyan">semester</span> = <span className="code-yellow">"3rd"</span></p>
+                      <p className="indent"><span className="code-cyan">graduation</span> = <span className="code-yellow">"Jun 2029"</span></p>
                       <p className="indent"><span className="code-cyan">focus</span> = [<span className="code-yellow">"Backend"</span>, <span className="code-yellow">"Automation"</span>, <span className="code-yellow">"AI"</span>]</p>
                       <p className="indent"><span className="code-cyan">goal</span> = <span className="code-yellow">"My next internship"</span></p>
                       <p className="code-comment"># Always learning, always building...</p>
@@ -285,7 +336,7 @@ export default function App() {
                   )}
                 </div>
               </div>
-              <div className="code-card-footer"><span><i /> saved</span><span>UTF-8</span><span>Python</span></div>
+              <div className="code-card-footer"><span><i /> {t.saved}</span><span>UTF-8</span><span>Python</span></div>
             </div>
           </div>
         </section>
@@ -296,16 +347,21 @@ export default function App() {
             <p className="section-sub">{t.projectsSub}</p>
           </div>
           <div className="project-grid">
-            {t.projectItems.map((project, index) => (
+            {t.projectItems.map((project, index) => {
+              const preview = previewFor(project.id)
+              return (
               <article className={`project-card accent-${projects[index].accent}`} key={project.id}>
                 <div className="project-card-top"><span className="project-number">{projects[index].number} / 04</span><span className="project-icon"><IconFor name={project.icon} size={21} /></span></div>
+                {preview && <div className="project-preview"><img src={preview} alt={project.previewAlt} loading="lazy" decoding="async" /></div>}
                 <div className="project-type">{project.type}</div>
                 <h3>{project.title}</h3>
                 <p className="project-desc">{project.desc}</p>
+                {project.note && <p className="project-note"><span>i</span>{project.note}</p>}
                 <div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
                 <div className="project-card-bottom"><span className="project-status"><i />{project.status}</span><a href={projects[index].link} target="_blank" rel="noreferrer" aria-label={`${t.codeLabel}: ${project.title}`}><Github size={16} /> {t.codeLabel} <ArrowUpRight size={13} /></a></div>
               </article>
-            ))}
+              )
+            })}
           </div>
         </section>
 
@@ -317,7 +373,7 @@ export default function App() {
           </div>
           <div className="stack-layout">
             <div className="tech-grid">
-              {technologies.map((tech, i) => <div className="tech-item" key={tech.name}><span className="tech-number">0{i + 1}</span><div><h3>{tech.name}</h3><p>{tech.category}</p></div><span className="tech-level">{tech.level}</span></div>)}
+              {t.technologies.map((tech, i) => <div className="tech-item" key={tech.name}><span className="tech-number">0{i + 1}</span><div><h3>{tech.name}</h3><p>{tech.category}</p></div><span className="tech-level">{tech.level}</span></div>)}
             </div>
             <div className="soft-panel">
               <div className="soft-panel-head"><Zap size={17} /><span>{t.softLabel}</span></div>
@@ -334,41 +390,36 @@ export default function App() {
               <p className="eyebrow"><span className="eyebrow-line" />{t.contactLabel}</p>
               <h2>{t.contactTitle}</h2>
               <p>{t.contactText}</p>
+              <div className="contact-email">
+                <a href={mailtoHref}><Mail size={14} />{email}</a>
+                <button type="button" className="copy-button" onClick={copyEmail} aria-label={t.copyEmail}>
+                  {emailCopied ? <Check size={13} /> : <Copy size={13} />}
+                  {emailCopied ? t.copiedShort : t.copyEmail}
+                </button>
+              </div>
               <div className="contact-actions">
-                <a
-                  className="button button-primary"
-                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(
-                    lang === 'pt'
-                      ? 'Oportunidade de estágio — Desenvolvimento de Software'
-                      : 'Internship Opportunity — Software Development'
-                  )}`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="button button-primary" href={mailtoHref}>
                   <Mail size={16} />
                   {t.emailButton}
                   <ArrowUpRight size={15} />
                 </a>
-              <a className="button button-ghost" href={github} target="_blank" rel="noreferrer"><Github size={16} />{t.githubButton}<ArrowUpRight size={15} /></a></div>
+              <a className="button button-ghost" href={github} target="_blank" rel="noreferrer"><Github size={16} />{t.githubButton}<ArrowUpRight size={15} /></a>
+              <a className="button button-ghost" href={resumeUrl} download><Download size={15} />{t.resume}</a></div>
               {emailCopied && (
                 <div className="copy-toast" role="status" aria-live="polite">
                   <Check size={16} />
-                  <span>
-                    {lang === 'pt'
-                      ? '> e-mail copiado com sucesso'
-                      : '> email copied successfully'}
-                  </span>
+                  <span>{t.copied}</span>
                 </div>
               )}            
             </div>
-            <div className="contact-index">LET’S<br />CONNECT<span>.</span></div>
+            <div className="contact-index">{t.contactIndex[0]}<br />{t.contactIndex[1]}<span>.</span></div>
           </div>
         </section>
       </main>
 
       <footer className="footer section-wrap">
         <a className="brand footer-brand" href="#home"><span className="brand-mark"><Terminal size={17} /></span><span>lf<span className="brand-dot">.</span>dev</span></a>
-        <p>© {new Date().getFullYear()} Luis Filipe. {t.footer}</p>
+        <p>© {new Date().getFullYear()} Luís Filipe. {t.footer}</p>
         <button onClick={() => scrollTo('home')}>{t.backTop}<ArrowUpRight size={13} /></button>
       </footer>
     </div>
